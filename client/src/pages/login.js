@@ -35,9 +35,9 @@ function Login(props) {
     <div className="container my-1">
       <Link to="/signup">← Don't have an account? Click here to Signup</Link>
 
-      <Heading >Login</Heading>
 
       <Box m="5" width="250px">
+      <Heading >Login</Heading>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <FormLabel htmlFor="email">Email address:</FormLabel>
@@ -66,6 +66,7 @@ function Login(props) {
         ) : null}
         <div className="flex-row flex-end">
           <Button mt="5" colorScheme="green" type="submit">Submit</Button>
+          {error && <div>Login failed</div>}
         </div>
       </form>
       </Box>

@@ -1,25 +1,26 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+const { Schema } = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const employeeSchema = new Schema(
-  {
-    employeename: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true
-    },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      match: [/.+@.+\..+/, 'Must match an email address!']
-    },
-    password: {
-      type: String,
-      required: true,
-      minlength: 5
-    }
+{
+    username: {
+        type: String,
+        required: true,
+        unique: true,
+        trim: true
+      },
+      email: {
+        type: String,
+        required: true,
+        unique: true,
+        match: [/.+@.+\..+/, 'Must match an email address!']
+      },
+      password: {
+        type: String,
+        required: true,
+        minlength: 5
+      },
   }
 );
 
@@ -39,6 +40,6 @@ employeeSchema.methods.isCorrectPassword = async function(password) {
 };
 
 
-const employee = model('employee', employeeSchema);
+const Employee = mongoose.model('Employee', employeeSchema);
 
-module.exports = employee;
+module.exports = Employee;

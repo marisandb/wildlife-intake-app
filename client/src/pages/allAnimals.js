@@ -1,14 +1,23 @@
 import React from 'react';
-import ThoughtList from '../components/ThoughtList';
-import ThoughtForm from '../components/ThoughtForm';
-import Auth from '../utils/auth';
+import AnimalList from '../components/animalList';
+// import Auth from '../utils/auth';
 import { useQuery } from '@apollo/react-hooks';
-import { QUERY_THOUGHTS, QUERY_ME_BASIC } from '../utils/queries';
+import { QUERY_ANIMALS } from '../utils/queries';
 
-const allAnimals = () => {
-    const loggedIn = Auth.loggedIn();
-    
+const AllAnimals = () => {
+    // const loggedIn = Auth.loggedIn();
+     // use useQuery hook to make query request
+  const { data } = useQuery(QUERY_ANIMALS);
+  const animals = data?.animals || [];
+  console.log(animals)
 
-}
+  return (
+    <main>
+      <div className='flex-row justify-space-between'>
+        <AnimalList animals={animals} />
+      </div>
+    </main>
+  );
+};
 
-export default allAnimals;
+export default AllAnimals;

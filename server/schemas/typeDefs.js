@@ -12,23 +12,22 @@ type Animal {
     finderNumber: String
     finderAddress: String
   }
-type Employee {
+  type Employee {
     _id: ID
-    firstName: String
-    lastName: String
+    username: String
     email: String
   }
+
 type Auth {
     token: ID
     employee: Employee
   }
 type Query {
-    employee: Employee
-    animal: Animal
+    animal(_id: ID!):Animal
   }
 type Mutation {
-    addEmployee(firstName: String!, lastName: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addEmployee(username: String!, email: String!, password: String!): Auth
     addAnimal(speciesName: String,
         speciesAge: Int,
         pickup: String,

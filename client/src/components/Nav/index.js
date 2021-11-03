@@ -55,6 +55,11 @@ function Nav() {
               IntakeForm
             </BreadcrumbLink>
         </BreadcrumbItem>
+        <BreadcrumbItem>
+          <BreadcrumbLink fontSize="xl" mr="4" color="white" as={Link} to="/allAnimals">
+            All animals            
+            </BreadcrumbLink>
+        </BreadcrumbItem>
       </Breadcrumb>
       );
     }

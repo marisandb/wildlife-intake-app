@@ -31,3 +31,17 @@ export const ADD_EMPLOYEE = gql`
     }
   }
 `;
+
+export const ADD_ANIMAL = gql`
+  mutation addAnimal {
+      _id
+      speciesName
+      speciesAge
+      pickup
+      circumstance
+      initObservations
+      finderName
+      finderNumber
+      finderAddress
+  }
+`;

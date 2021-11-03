@@ -32,13 +32,13 @@ function Home() {
             </Center>
             <Flex>
                 <Box />
-                <iframe title="bat post" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FCRHSWildlife%2Fposts%2F1723726841145851&show_text=true&width=500" width="500" height="800" scrolling="no" frameborder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <iframe title="bat post" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FCRHSWildlife%2Fposts%2F1723726841145851&show_text=true&width=500" width="500" height="800" scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 <Spacer />
                 <Box />
-                <iframe title="flower post" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FCRHSWildlife%2Fposts%2F1722778474574021&show_text=true&width=500" width="500" height="800" scrolling="no" frameborder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <iframe title="flower post" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FCRHSWildlife%2Fposts%2F1722778474574021&show_text=true&width=500" width="500" height="800" scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
                 <Spacer />
                 <Box />
-                <iframe title="birds of prey" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FCRHSWildlife%2Fposts%2F1713905518794650&show_text=true&width=500" width="500" height="800" scrolling="no" frameborder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+                <iframe title="birds of prey" src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FCRHSWildlife%2Fposts%2F1713905518794650&show_text=true&width=500" width="500" height="800" scrolling="no" frameBorder="0" allowFullScreen={true} allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
             </Flex>
             </Box>
         </section>

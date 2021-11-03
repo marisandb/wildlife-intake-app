@@ -11,6 +11,7 @@ import Home from './pages/home'
 import Login from "./pages/login";
 import Signup from "./pages/signup";
 import IntakeForm from './pages/intakeForm';
+import allAnimals from './pages/allAnimals';
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -26,7 +27,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
-      <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
     <ChakraProvider theme={theme}>
      <Router>
        <Nav />
@@ -35,10 +36,11 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
           <Route exact path="/intakeForm" component={IntakeForm} />
+          <Route exact path="/allAnimals" component={allAnimals} />
        </Switch>
      </Router>
     </ChakraProvider>
-     </ApolloProvider>
+    </ApolloProvider>
   );
 }
 

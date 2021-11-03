@@ -1,8 +1,22 @@
 import React, { useState } from 'react';
-import {form, FormLabel, Input, Select, Button, Heading, Box, Spacer, Grid, Center} from "@chakra-ui/react"
+import {FormLabel, Input, Select, Button, Heading, Box, Spacer, Grid, Center} from "@chakra-ui/react"
+import { useMutation } from '@apollo/client';
+import { ADD_ANIMAL } from '../utils/mutations';
+import { QUERY_ANIMALS } from '../utils/queries';
 
 const IntakeForm = () => {
-    const [formState, setFormState] = useState({ numberOfAnimals: '', speciesName: '', speciesAge: '', pickup: '', circumstance:'', initObservations:'', finderName:'', finderNumber:'', finderAddress:''});
+  const [addAnimal, { error }] = useMutation(ADD_ANIMAL, {
+    update(cache, { data: { addAnimal } }) {
+      // read what's currently in the cache
+      const { animals } = cache.readQuery({ query: QUERY_ANIMALS });
+  
+      // prepend the newest thought to the front of the array
+      cache.writeQuery({
+        query: QUERY_ANIMALS,
+        data: { animals: [addAnimal, ...animals] }
+      });
+    }
+  });  const [formState, setFormState] = useState({ numberOfAnimals: '', speciesName: '', speciesAge: '', pickup: '', circumstance:'', initObservations:'', finderName:'', finderNumber:'', finderAddress:''});
   
     // update state based on form Input changes
     const handleChange = (event) => {
@@ -17,6 +31,14 @@ const IntakeForm = () => {
  // submit form
  const handleFormSubmit = async (event) => {
     event.preventDefault();
+    try {
+      // add thought to database
+      await addAnimal({
+        
+      });
+    } catch (e) {
+      console.error(e);
+    }
   };
   
 return (
@@ -127,6 +149,8 @@ return (
         
         <div>
           <Button mt="5" colorScheme="green" type="submit">Submit</Button>
+          {error && <span className="ml-2">   Oops Something went wrong...</span>}
+
         </div>
       </form>
       </Grid>

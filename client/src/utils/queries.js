@@ -1,22 +1,17 @@
 import { gql } from '@apollo/client';
 
-export const QUERY_EMPLOYEE = gql`
-  {
-    employee {
-      firstName
-      lastName
-      orders {
+export const QUERY_ANIMALS = gql`
+{
+    animal {
         _id
-        purchaseDate
-        products {
-          _id
-          name
-          description
-          price
-          quantity
-          image
-        }
-      }
+        speciesName
+        speciesAge
+        pickup
+        circumstance
+        initObservations
+        finderName
+        finderNumber
+        finderAddress
     }
   }
 `;

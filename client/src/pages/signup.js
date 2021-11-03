@@ -6,31 +6,35 @@ import { ADD_EMPLOYEE } from '../utils/mutations';
 import {FormLabel, Input, Box, Button, Heading} from "@chakra-ui/react"
 
 
-function Signup(props) {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [addEmployee] = useMutation(ADD_EMPLOYEE);
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    const mutationResponse = await addEmployee({
-      variables: {
-        email: formState.email,
-        password: formState.password,
-        firstName: formState.firstName,
-        lastName: formState.lastName,
-      },
-    });
-    const token = mutationResponse.data.addEmployee.token;
-    Auth.login(token);
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
+const Signup = () => {
+    const [formState, setFormState] = useState({ username: '', email: '', password: '' });
+    const [addEmployee, { error }] = useMutation(ADD_EMPLOYEE);
+  
+    // update state based on form input changes
+    const handleChange = event => {
+      const { name, value } = event.target;
+  
+      setFormState({
+        ...formState,
+        [name]: value
+      });
+    };
+  
+    // submit form
+    const handleFormSubmit = async event => {
+      event.preventDefault();
+  
+      try {
+        const { data } = await addEmployee({
+          variables: { ...formState }
+        });
+  
+        Auth.login(data.addEmployee.token);
+      } catch (e) {
+        console.error(e);
+      }
+    };
+  
 
   return (
     <div className="container my-1">
@@ -43,48 +47,45 @@ function Signup(props) {
     <Box m="5" width="250px">
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
-          <FormLabel htmlFor="firstName">First Name:</FormLabel>
+          <FormLabel htmlFor="username">Username:</FormLabel>
           <Input
-            placeholder="First"
-            name="firstName"
-            type="firstName"
-            id="firstName"
+            placeholder="username"
+            name="username"
+            type="username"
+            id="username"
+            value={formState.username}
             onChange={handleChange}
           />
         </div>
         <div className="flex-row space-between my-2">
-          <FormLabel htmlFor="lastName">Last Name:</FormLabel>
+          <FormLabel htmlFor="eamil">Email:</FormLabel>
           <Input
-            placeholder="Last"
-            name="lastName"
-            type="lastName"
-            id="lastName"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <FormLabel htmlFor="email">Email:</FormLabel>
-          <Input
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-          />
+                className="form-input"
+                placeholder="Your email"
+                name="email"
+                type="email"
+                id="email"
+                value={formState.email}
+                onChange={handleChange}
+              />
         </div>
         <div className="flex-row space-between my-2">
           <FormLabel htmlFor="pwd">Password:</FormLabel>
           <Input
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            onChange={handleChange}
-          />
+                className="form-input"
+                placeholder="******"
+                name="password"
+                type="password"
+                id="password"
+                value={formState.password}
+                onChange={handleChange}
+              />
         </div>
         
         <div className="flex-row flex-end">
           <Button mt="5" colorScheme="green" type="submit">Submit</Button>
+          {error && <div>Sign up failed</div>}
+
         </div>
       </form>
         </Box>
