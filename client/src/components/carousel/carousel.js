@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { CarouselImages } from './carouselImages';
-import { Image, Button, ButtonGroup, Box, VStack} from "@chakra-ui/react"
+import { Image, Button, ButtonGroup, Box, VStack, Heading, Text, Center} from "@chakra-ui/react"
 
 
 const Carousel = ({ slides }) => {
@@ -20,29 +20,41 @@ const Carousel = ({ slides }) => {
   }
 
   return (
-    <Box display="flex" mt="2" alignItems="center">
-      <VStack>
-      {CarouselImages.map((slide, index) => {
-        return (
-          <div
-          className={index === current ? 'slide active' : 'slide'}
-          key={index}
-          >
-            {index === current && (
-              <Image src={slide.image} boxSize="250px"
-              objectFit="cover" alt='various wildlife'/>
-              )}
-          </div>
-        );
-      })}
-       <Box display="flex" mt="2" alignItems="center">
-        <ButtonGroup variant="outline" spacing="6">
-        <Button colorScheme="green" onClick={prevSlide}>Previous Photo</Button>
-        <Button colorScheme="green" onClick={nextSlide}>Next Photo</Button>
-        </ButtonGroup>
-       </Box>
-       </VStack>
-    </Box>
+    <section>
+      <Center>
+      <Heading p="10px"> Check out our success stories! </Heading>
+      </Center>
+            {CarouselImages.map((slide, index) => {
+              return (
+                <div
+                className={index === current ? 'slide active' : 'slide'}
+                key={index}
+                >
+                <VStack align="center">
+                  <Box>
+                  {index === current && (
+                    <Image src={slide.image} boxSize="300px"
+                    objectFit="cover" alt='various wildlife'/>
+                    )}
+                  </Box>
+                  <Box width="750px">
+                  {index === current && (
+                  <Text fontSize="lg"> {slide.description} </Text>
+                      )}
+                  </Box>
+                </VStack>
+                </div>
+              );
+            })}
+            <Center>
+            <Box display="flex" mt="2">
+              <ButtonGroup variant="outline" spacing="6">
+              <Button colorScheme="green" onClick={prevSlide}>Previous Photo</Button>
+              <Button colorScheme="green" onClick={nextSlide}>Next Photo</Button>
+              </ButtonGroup>
+            </Box>
+          </Center>
+    </section>
   );
 };
 

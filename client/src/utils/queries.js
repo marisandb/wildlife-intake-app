@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const QUERY_EMPLOYEE = gql`
   {
-    user {
+    employee {
       firstName
       lastName
       orders {

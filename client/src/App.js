@@ -6,11 +6,11 @@ import {
   ChakraProvider,
   theme,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
 import Nav from './components/Nav/index'
 import Home from './pages/home'
 import Login from "./pages/login";
 import Signup from "./pages/signup";
+import IntakeForm from './pages/intakeForm';
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -34,6 +34,7 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/signup" component={Signup} />
+          <Route exact path="/intakeForm" component={IntakeForm} />
        </Switch>
      </Router>
     </ChakraProvider>

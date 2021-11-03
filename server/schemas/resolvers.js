@@ -14,27 +14,27 @@ const resolvers = {
     },
     Mutation: {
         addEmployee: async (parent, args) => {
-            const user = await User.create(args);
+            const employee = await Employee.create(args);
             const token = signToken(user);
       
             return { token, user };
           },
           login: async (parent, { email, password }) => {
-            const user = await User.findOne({ email });
+            const employee = await Employee.findOne({ email });
       
-            if (!user) {
+            if (!employee) {
               throw new AuthenticationError('Incorrect credentials');
             }
       
-            const correctPw = await user.isCorrectPassword(password);
+            const correctPw = await employee.isCorrectPassword(password);
       
             if (!correctPw) {
               throw new AuthenticationError('Incorrect credentials');
             }
       
-            const token = signToken(user);
+            const token = signToken(employee);
       
-            return { token, user };
+            return { token, employee };
           }
     }
 }

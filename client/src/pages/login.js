@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { LOGIN } from '../utils/mutations';
 import Auth from '../utils/auth';
-import {FormControl, FormLabel, Input, Select, RadioGroup, HStack, Radio, Button, Heading} from "@chakra-ui/react"
+import {FormLabel, Input, Box, Button, Heading} from "@chakra-ui/react"
 
 
 function Login(props) {
@@ -33,9 +33,11 @@ function Login(props) {
 
   return (
     <div className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
+      <Link to="/signup">← Don't have an account? Click here to Signup</Link>
 
-      <Heading>Login</Heading>
+      <Heading >Login</Heading>
+
+      <Box m="5" width="250px">
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <FormLabel htmlFor="email">Email address:</FormLabel>
@@ -63,9 +65,10 @@ function Login(props) {
           </div>
         ) : null}
         <div className="flex-row flex-end">
-          <Button colorScheme="green" type="submit">Submit</Button>
+          <Button mt="5" colorScheme="green" type="submit">Submit</Button>
         </div>
       </form>
+      </Box>
     </div>
   );
 }

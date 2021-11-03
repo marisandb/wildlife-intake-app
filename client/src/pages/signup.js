@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_EMPLOYEE } from '../utils/mutations';
-import {FormControl, FormLabel, Input, Select, RadioGroup, HStack, Radio, Button, Heading} from "@chakra-ui/react"
+import {FormLabel, Input, Box, Button, Heading} from "@chakra-ui/react"
 
 
 function Signup(props) {
@@ -34,9 +34,13 @@ function Signup(props) {
 
   return (
     <div className="container my-1">
-      <Link to="/login">← Go to Login</Link>
-
+      <Link to="/login">← Already have an account? Click here to login</Link>
+    <Box m="5">
       <Heading>Signup</Heading>
+      <Heading as="h2" size="sm"> This page is for employees only </Heading>
+    </Box>
+
+    <Box m="5" width="250px">
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2">
           <FormLabel htmlFor="firstName">First Name:</FormLabel>
@@ -78,10 +82,12 @@ function Signup(props) {
             onChange={handleChange}
           />
         </div>
+        
         <div className="flex-row flex-end">
-          <Button colorScheme="green" type="submit">Submit</Button>
+          <Button mt="5" colorScheme="green" type="submit">Submit</Button>
         </div>
       </form>
+        </Box>
     </div>
   );
 }

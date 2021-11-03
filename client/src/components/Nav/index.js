@@ -1,54 +1,79 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import './index.css'
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    Heading,
+    Flex,
+    Box,
+    Spacer
+  } from "@chakra-ui/react"
 
 function Nav() {
 
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/allAnimals">
-              View all Animals
-            </Link>
-          </li>
-          <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
+          <Breadcrumb>
+            <BreadcrumbItem>
+                <BreadcrumbLink color="white" as={Link} to="allAnimals">
+                View all Animals
+                </BreadcrumbLink>
+            </BreadcrumbItem>
+
+            <BreadcrumbItem color="white">
             <a href="/" onClick={() => Auth.logout()}>
               Logout
             </a>
-          </li>
-        </ul>
+            </BreadcrumbItem>
+        </Breadcrumb>
+
+        
+
       );
     } else {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">
-              Signup
-            </Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/login">
-              Login
-            </Link>
-          </li>
-        </ul>
+        <Breadcrumb>
+        <BreadcrumbItem isCurrentPage>
+            <BreadcrumbLink fontSize="xl" mr="4" color="white" as={Link} to="/">Home</BreadcrumbLink>
+        </BreadcrumbItem>       
+        <BreadcrumbItem>
+          <BreadcrumbLink fontSize="xl" mr="4" color="white" as={Link} to="/signup">
+            Signup
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+          <BreadcrumbLink fontSize="xl" mr="4" color="white" as={Link} to="/login">
+            Login
+          </BreadcrumbLink>
+        </BreadcrumbItem>
+        <BreadcrumbItem>
+          <BreadcrumbLink fontSize="xl" mr="4" color="white" as={Link} to="/intakeForm">
+              IntakeForm
+            </BreadcrumbLink>
+        </BreadcrumbItem>
+      </Breadcrumb>
       );
     }
   }
 
   return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">
-          Home
-        </Link>
-      </h1>
-
+    <header>
       <nav>
-        {showNavigation()}
+        <Flex>
+            <Box p="5">
+            <Heading size="lg" color="white">
+                Coulee Region Humane Society Wildlife Rehabilitation
+            </Heading>
+            </Box>
+            <Spacer />
+            <Box>
+            {showNavigation()}
+            </Box>
+        </Flex>
       </nav>
     </header>
   );
